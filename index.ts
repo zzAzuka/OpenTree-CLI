@@ -1,19 +1,18 @@
 #! /usr/bin/env bun
 
-/*This line is called a Shebang! This line tells the shell to use bun as 
-the runtime when the CLI is invoked in the terminal*/
+import { Command } from 'commander';
 
-import { program } from 'commander';
+console.log("Hello! This is the entry point of the Open Tree CLI.");
+const program = new Command();
 
-console.log("Hello, World! This is the entry point of the CLI.");
- 
 program
-  .version('1.0.0')
-  .command('sum <num1> <num2>')
-  .description('Calculate the sum of two numbers')
-  .action((num1, num2) => {
-    const result = parseInt(num1) + parseInt(num2);
-    console.log(`The sum of ${num1} and ${num2} is ${result}`);
-  });
- 
-program.parse(process.argv);
+  .name('open-tree')
+  .description('A CLI tool to generate folder tree structures!')
+  .version('1.0.0');
+
+program
+  .argument('<string>', 'The name of the project for which we want to generate a folder tree structure.')
+  .action((projectName) => {
+    console.log(`The folder tree structure for the project '${projectName}' is...`);
+  })
+program.parse();
