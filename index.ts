@@ -1,9 +1,9 @@
 #! /usr/bin/env bun
 
 import { Command } from 'commander';
-import createDirectory from 'src/modules/createDirectory';
+import {createDirectory} from 'src/modules/createDirectory';
 
-console.log("Hello! This is the entry point of the Open Tree CLI.");
+//console.log("Hello! This is the entry point of the Open Tree CLI.");
 const program = new Command();
 
 program
