@@ -6,4 +6,12 @@ class DirectoryAlreadyExists extends Error {
   }
 };
 
-export {DirectoryAlreadyExists};
+class FileAlreadyExists extends Error {
+  constructor(message: string, public field?: string) {
+    super(message);
+    this.name = 'fileAlreadyExists';
+    Object.setPrototypeOf(this, FileAlreadyExists.prototype);
+  }
+};
+
+export {DirectoryAlreadyExists, FileAlreadyExists};
