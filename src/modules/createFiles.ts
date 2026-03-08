@@ -1,33 +1,12 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import {FileAlreadyExists} from "src/utils/errorHandling";
+import type {FolderContentTemplate} from "src/types/folderContentTemplate";
 
-const tsFolderContents = [
-    {
-        folder: "src",
-        name: "index.ts",
-        content: `console.log("Hello, World!");`
-    },
-    {
-        folder: "",
-        name: "README.md",
-        content: "# TS Project"
-    },
-    {
-        folder: "",
-        name: "package.json",
-        content: `{
-            "name": "ts-project",
-            "version": "1.0.0",
-            "description": "",
-            "main": "index.js",
-            }`
-    }
-]
 
-const createFiles = async (filePath: string) => {
+const createFiles = async (filePath: string, folderContents: FolderContentTemplate[]) => {
     try{
-        for (const file of tsFolderContents) {
+        for (const file of folderContents) {
             if (file.folder != ""){
                 await mkdir(path.join(filePath, file.folder));
                 const currFolderPath = path.join(filePath, file.folder);
