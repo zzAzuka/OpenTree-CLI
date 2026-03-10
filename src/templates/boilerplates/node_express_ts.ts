@@ -1,8 +1,7 @@
-const nodeExpressTsTemplate = [
-{
-    folder: "src",
-    name: "index.ts",
-    content: `
+const nodeExpressTsTemplate = {
+  folder: ["src", "src/routes"],
+  name_and_content: {
+    "src/index.ts": `
 import express from "express";
 
 const app = express();
@@ -15,12 +14,9 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(\`Server running on port \${PORT}\`);
 });
-`
-},
-{
-    folder: "src/routes",
-    name: "index.ts",
-    content: `
+`,
+
+    "src/routes/index.ts": `
 import { Router } from "express";
 
 const router = Router();
@@ -30,12 +26,9 @@ router.get("/health", (req, res) => {
 });
 
 export default router;
-`
-},
-{
-    folder: "",
-    name: "package.json",
-    content: `
+`,
+
+    "package.json": `
 {
   "name": "express-ts-app",
   "version": "1.0.0",
@@ -46,12 +39,9 @@ export default router;
     "express": "^4.18.2"
   }
 }
-`
-},
-{
-    folder: "",
-    name: "tsconfig.json",
-    content: `
+`,
+
+    "tsconfig.json": `
 {
   "compilerOptions": {
     "target": "ES2020",
@@ -61,13 +51,10 @@ export default router;
     "strict": true
   }
 }
-`
-},
-{
-    folder: "",
-    name: "README.md",
-    content: "# Express TypeScript API"
-}
-]
+`,
+
+    "README.md": "# Express TypeScript API"
+  }
+};
 
 export { nodeExpressTsTemplate };

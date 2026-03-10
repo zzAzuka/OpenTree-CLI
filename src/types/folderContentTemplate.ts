@@ -1,7 +1,6 @@
 type FolderContentTemplate = {
-    folder: string;
-    name: string;
-    content: string;
+    folder: string[];
+    name_and_content: Record<string, string>;
 };
 
 export type { FolderContentTemplate };

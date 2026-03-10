@@ -13,8 +13,8 @@ program
 
 program
   .argument('<string>', 'The name of the project for which we want to generate a folder tree structure.')
-  .action((projectName) => {
+  .action( async (projectName) => {
     console.log(`The folder tree structure for the project '${projectName}' is...`);
-    createDirectory(projectName);
+    await createDirectory(projectName);
   })
 program.parse();

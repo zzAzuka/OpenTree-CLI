@@ -1,8 +1,7 @@
-const reactViteTsTemplate = [
-{
-    folder: "src",
-    name: "main.tsx",
-    content: `
+const reactViteTsTemplate = {
+  folder: ["src"],
+  name_and_content: {
+    "src/main.tsx": `
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -12,21 +11,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <App />
   </React.StrictMode>
 );
-`
-},
-{
-    folder: "src",
-    name: "App.tsx",
-    content: `
+`,
+
+    "src/App.tsx": `
 export default function App() {
   return <h1>Hello Vite + React</h1>;
 }
-`
-},
-{
-    folder: "",
-    name: "index.html",
-    content: `
+`,
+
+    "index.html": `
 <!DOCTYPE html>
 <html>
   <body>
@@ -34,12 +27,9 @@ export default function App() {
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-`
-},
-{
-    folder: "",
-    name: "package.json",
-    content: `
+`,
+
+    "package.json": `
 {
   "name": "vite-react-app",
   "version": "1.0.0",
@@ -48,13 +38,10 @@ export default function App() {
     "build": "vite build"
   }
 }
-`
-},
-{
-    folder: "",
-    name: "README.md",
-    content: "# Vite React App"
-}
-]
+`,
+
+    "README.md": "# Vite React App"
+  }
+};
 
 export { reactViteTsTemplate };

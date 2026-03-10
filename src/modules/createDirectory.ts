@@ -7,8 +7,8 @@ import {DirectoryAlreadyExists} from "src/utils/errorHandling";
 const createDirectory = async (name: string) => {
     const currentWorkingDirectory = process.cwd();
     const filePath = path.join(currentWorkingDirectory, name);
+    await mkdir(filePath);
     try{
-        await mkdir(filePath);
         const selectedOption = await cliOptions();
         if (selectedOption) {
             await createFiles(filePath, selectedOption);
