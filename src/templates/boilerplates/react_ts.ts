@@ -1,5 +1,6 @@
 const reactViteTsTemplate = {
   folder: ["src"],
+
   name_and_content: {
     "src/main.tsx": `
 import React from "react";
@@ -41,7 +42,19 @@ export default function App() {
 `,
 
     "README.md": "# Vite React App"
-  }
+  },
+
+  dependencies: [
+    "react",
+    "react-dom"
+  ],
+
+  devDependencies: [
+    "vite",
+    "typescript",
+    "@types/react",
+    "@types/react-dom"
+  ]
 };
 
 export { reactViteTsTemplate };

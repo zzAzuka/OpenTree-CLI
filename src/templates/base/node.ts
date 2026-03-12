@@ -1,5 +1,6 @@
 const nodeTemplate = {
     folder: [""],
+
     name_and_content: {
         "package.json" : `
 {
@@ -11,10 +12,13 @@ const nodeTemplate = {
   "dependencies": {}
 }
 `,
-".gitignore" : "",
-"README.md" : "# Express TypeScript API"
-    }
-}
+        ".gitignore" : "",
+        "README.md" : "# Express TypeScript API"
+    },
 
+    dependencies: [],
+
+    devDependencies: []
+}
 
 export { nodeTemplate };

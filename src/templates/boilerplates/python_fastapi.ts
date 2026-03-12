@@ -1,5 +1,6 @@
 const pythonFastApiTemplate = {
   folder: ["app", "app/routes"],
+
   name_and_content: {
     "app/main.py": `
 from fastapi import FastAPI
@@ -34,7 +35,14 @@ if __name__ == "__main__":
 `,
 
     "README.md": "# FastAPI Backend"
-  }
+  },
+
+  dependencies: [
+    "fastapi",
+    "uvicorn"
+  ],
+
+  devDependencies: []
 };
 
 export { pythonFastApiTemplate };

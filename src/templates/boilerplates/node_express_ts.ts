@@ -1,5 +1,6 @@
 const nodeExpressTsTemplate = {
   folder: ["src", "src/routes"],
+
   name_and_content: {
     "src/index.ts": `
 import express from "express";
@@ -54,7 +55,18 @@ export default router;
 `,
 
     "README.md": "# Express TypeScript API"
-  }
+  },
+
+  dependencies: [
+    "express"
+  ],
+
+  devDependencies: [
+    "typescript",
+    "ts-node",
+    "@types/node",
+    "@types/express"
+  ]
 };
 
 export { nodeExpressTsTemplate };

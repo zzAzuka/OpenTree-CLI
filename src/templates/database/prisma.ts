@@ -1,5 +1,6 @@
 const prismaTemplate = {
     folder: ["prisma", "src/db"],
+
     name_and_content: {
         "prisma/schema.prisma": `
 generator client {
@@ -16,15 +17,22 @@ model User {
   email String  @unique
   name  String?
 }`,
-"src/db/prismaClient.js": `
+        "src/db/prismaClient.js": `
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
 module.exports = prisma;
 `
-    }
-}
+    },
 
+    dependencies: [
+        "@prisma/client"
+    ],
+
+    devDependencies: [
+        "prisma"
+    ]
+}
 
 export { prismaTemplate };

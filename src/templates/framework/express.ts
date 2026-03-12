@@ -1,5 +1,6 @@
 const expressTemplate = {
     folder: ["src"],
+
     name_and_content: {
         "src/app.js": `
 const express = require("express");
@@ -21,8 +22,13 @@ app.listen(PORT, () => {
   console.log("Server running!");
 });
 `
-    }
-}
+    },
 
+    dependencies: [
+        "express"
+    ],
+
+    devDependencies: []
+}
 
 export { expressTemplate };
