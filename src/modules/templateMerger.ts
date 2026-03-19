@@ -1,5 +1,4 @@
 import type {FolderContentTemplate} from "src/types/folderContentTemplate";
-import { installPackages } from "./installPackages";
 
 const finalTemplate = (templateList: FolderContentTemplate[]) => {
     const mergedTemplate: FolderContentTemplate = {
