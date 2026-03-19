@@ -8,7 +8,7 @@ const createFiles = async (filePath: string, folderContents: FolderContentTempla
     try{
         for (const file of folderContents.folder) {
             if (file != ""){
-                await mkdir(path.join(filePath, file));}}
+                await mkdir(path.join(filePath, file), { recursive: true });}}
         
         for (const [name, content] of Object.entries(folderContents.name_and_content) as [string, string][]) {
                 const currFolderPath = path.join(filePath, name);

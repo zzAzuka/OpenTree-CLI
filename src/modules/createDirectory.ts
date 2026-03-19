@@ -1,18 +1,12 @@
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
-import {cliOptions} from "src/modules/cliOptions";
-import {createFiles} from "src/modules/createFiles"
 import {DirectoryAlreadyExists} from "src/utils/errorHandling";
 
 const createDirectory = async (name: string) => {
-    const currentWorkingDirectory = process.cwd();
-    const filePath = path.join(currentWorkingDirectory, name);
-    await mkdir(filePath);
     try{
-        const selectedOption = await cliOptions();
-        if (selectedOption) {
-            await createFiles(filePath, selectedOption);
-        }
+        const currentWorkingDirectory = process.cwd();
+        const filePath = path.join(currentWorkingDirectory, name);
+        await mkdir(filePath);
         return filePath;
     }catch (error: any) {
         if (error.code === "EEXISTS") {
