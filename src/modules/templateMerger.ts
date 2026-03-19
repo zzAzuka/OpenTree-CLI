@@ -1,7 +1,7 @@
 import type {FolderContentTemplate} from "src/types/folderContentTemplate";
 import { installPackages } from "./installPackages";
 
-const finalTemplate = (templateList: any[]) => {
+const finalTemplate = (templateList: FolderContentTemplate[]) => {
     const mergedTemplate: FolderContentTemplate = {
         folder: [],
         name_and_content: {},
@@ -18,7 +18,6 @@ const finalTemplate = (templateList: any[]) => {
         mergedTemplate.devDependencies.push(...options.devDependencies);
     }
     console.log("Final Template for the chosen stack is", mergedTemplate);
-    installPackages(mergedTemplate);
     return mergedTemplate;
 }
 
