@@ -1,19 +1,34 @@
-import { execa } from "execa"; 
-import type {FolderContentTemplate} from "src/types/folderContentTemplate";
+import { execa } from "execa";
+import type { FolderContentTemplate } from "src/types/folderContentTemplate";
 
 async function installPackages(template: FolderContentTemplate) {
     try {
-        for (const dependency of template.dependencies) {
-            console.log(`Installing dependency: ${dependency}`);
-            await execa("npm", ["install", dependency], { stdio: "inherit" });
+        const deps = template.dependencies ?? [];
+        const devDeps = template.devDependencies ?? [];
+
+        if (deps.length) {
+            console.log(`Installing dependencies: ${deps.join(", ")}`);
+            await execa("npm", ["install", ...deps], {
+                stdio: "inherit",
+            });
         }
-        for (const devDependency of template.devDependencies) {
-            console.log(`Installing devDependency: ${devDependency}`);
-            await execa("npm", ["install", "-D", devDependency], { stdio: "inherit" });
+
+        if (devDeps.length) {
+            console.log(`Installing devDependencies: ${devDeps.join(", ")}`);
+            await execa("npm", ["install", "-D", ...devDeps], {
+                stdio: "inherit",
+            });
         }
+
         console.log("All packages installed successfully!");
-    }catch (error) {
-        console.error("Error installing packages:", error);
+    } catch (error: any) {
+        console.error("Error installing packages:");
+        console.error({
+            message: error.message,
+            exitCode: error.exitCode,
+            stderr: error.stderr,
+        });
+        throw error;
     }
 }
 

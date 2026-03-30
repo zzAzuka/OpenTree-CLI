@@ -1,17 +1,19 @@
-import type { TreeConfigTemplate } from "@/types/treeConfigType"
+import type { TreeConfigTemplate } from "@/types/treeConfigType";
 import type { FolderContentTemplate } from "@/types/folderContentTemplate";
-import {templateRegistry} from "@/core/templateRegistry";
+import { templateRegistry } from "@/core/templateRegistry";
 
-const resolveTemplates = async (userConfig:TreeConfigTemplate): Promise<FolderContentTemplate[]> => {
-    try{
-        return [
-            templateRegistry.base[userConfig.base],
-            templateRegistry.framework[userConfig.framework],
-            templateRegistry.database[userConfig.database]
-        ]
-    } catch (error: any) {
-        throw new Error("Error occurred while resolving templates: " + error.message);
-    }
-}
+const resolveTemplates = async (userConfig: TreeConfigTemplate): Promise<FolderContentTemplate[]> => {
+  const baseTemplate = templateRegistry.base[userConfig.base];
+  const frameworkTemplate = templateRegistry.framework[userConfig.framework];
+  const databaseTemplate = templateRegistry.database[userConfig.database];
+
+  if (!baseTemplate || !frameworkTemplate || !databaseTemplate) {
+    throw new Error(
+      `Invalid template configuration: base='${userConfig.base}', framework='${userConfig.framework}', database='${userConfig.database}'`
+    );
+  }
+
+  return [baseTemplate, frameworkTemplate, databaseTemplate];
+};
 
 export { resolveTemplates };
